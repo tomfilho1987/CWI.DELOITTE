@@ -1,0 +1,40 @@
+﻿@model List<Deloitte_NF.Models.NotaFiscal>
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+    var lista = Model; }
+
+<h3>Relatório de Vendas por Produto</h3>
+<table class="table table-striped datatable-padrao" id="tbRelatorio">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var nota in lista)
+        {
+            <tr>
+                <td style="text-align: center">@nota.Produto.NomeProduto</td>
+                <td style="text-align: right">@nota.QtdeProdutos</td>
+                <td style="text-align: center">@nota.DataNotaFiscal.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="row pull-right" style="margin-top:10px;">
+    <div class="col-sm-12">
+        <a onclick="voltar()" class="btn btn-default pull-right" style="margin-right:5px;">Voltar</a>
+    </div>
+</div>
+
+<script>
+    carregarDataTablePadrao('tbRelatorio');
+
+    $(".dataTables_filter").append('<button  style="" class="btn btn-primary pull-right" type="button" onclick="adicionarNovo()"><i class="fa fa-plus"></i>&nbsp;Novo</button>');
+
+    function voltar() {
+        location.href = '@Url.Action("Index")';
+    }
+</script>
