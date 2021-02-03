@@ -2,25 +2,25 @@
 @{ Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <h3>Nota Fiscal - Edição</h3>
-<form method="POST" id="frmNF">
+<form method="POST" id="formNotaFiscal">
     @Html.HiddenFor(x => x.IdNotaFiscal)
     @Html.HiddenFor(x => x.DataNotaFiscal)
     <div class="">
         <div class="row">
             <div class="col-sm-3">
-                <label>Cliente</label>
+                <label>Cliente *</label>
                 @Html.DropDownListFor(x => x.Cliente.IdCliente, Model.ListaClientes, "Selecione o Cliente", new { required = "required", @class = "form-control" })
             </div>
             <div class="col-sm-3">
-                <label>Fornecedor</label>
+                <label>Fornecedor *</label>
                 @Html.DropDownListFor(x => x.Fornecedor.IdFornecedor, Model.ListaFornecedor, "Selecione o Fornecedor", new { required = "required", @class = "form-control" })
             </div>
             <div class="col-sm-3">
-                <label>Produto</label>
+                <label>Produto *</label>
                 @Html.DropDownListFor(x => x.Produto.IdProduto, Model.ListaProdutos, "Selecione o Produto", new { required = "required", @class = "form-control" })
             </div>
             <div class="col-sm-3">
-                <label>Quantidade</label>
+                <label>Quantidade *</label>
                 @Html.TextBoxFor(m => m.QtdeProdutos, new { @class = "form-control numero", required = "required" })
             </div>
         </div>
@@ -30,7 +30,8 @@
                 <a onclick="salvar()" class="btn btn-primary pull-right" style="margin-right:5px;">Salvar</a>
                 @if (Model.IdNotaFiscal > 0)
                 {
-    <a onclick="excluir()" class="btn btn-primary pull-right" style="margin-right:5px;">Excluir</a>}
+                    <a onclick="excluir()" class="btn btn-primary pull-right" style="margin-right:5px;">Excluir</a>
+                }
 
                 <a onclick="voltar()" class="btn btn-default pull-right" style="margin-right:5px;">Voltar</a>
 
@@ -47,10 +48,10 @@
 
 <script>
     function salvar() {
-        if ($('#frmNF').valid()) {
+        if ($('#formNotaFiscal').valid()) {
             $.ajax({
                 url: '@Url.Action("Create")',
-                data: $('#frmNF').serialize(),
+                data: $('#formNotaFiscal').serialize(),
                 type: "POST",
                 success: function (data) {
                     swal(data,{
@@ -87,10 +88,10 @@
         }).then(function (isConfirm) {
 
             if (isConfirm) {
-                $('#frmNF').attr("action", "@Url.Action("Remove")");
+                $('#formNotaFiscal').attr("action", "@Url.Action("Remove")");
                 $.ajax({
                     url: '@Url.Action("Remove")',
-                    data: $('#frmNF').serialize(),
+                    data: $('#formNotaFiscal').serialize(),
                     type: "POST",
                     success: function (data) {
                         swal(data,{

@@ -510,7 +510,7 @@ namespace Deloitte_NF.Models
         /// </summary>
         /// <param name="id">Sequencial do Produto</param>
         /// <returns>Retorna o produto pesquisado</returns>
-        public Produto ConsultarProduto(int id)
+        private Produto ConsultarProduto(int id)
         {
             Produto produto = new Produto();
 
@@ -522,7 +522,7 @@ namespace Deloitte_NF.Models
 
                 dataReader = command.ExecuteReader();
 
-                while (dataReader.Read())
+                if (dataReader.Read())
                 {
                     produto.IdProduto = (int)dataReader["prod_id"];
                     produto.NomeProduto = (string)dataReader["prod_nome"];

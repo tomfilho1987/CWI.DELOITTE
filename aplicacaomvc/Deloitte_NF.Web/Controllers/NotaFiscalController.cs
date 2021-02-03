@@ -51,9 +51,11 @@ namespace Deloitte_NF.Controllers
         [HttpPost]
         public ActionResult Create(NotaFiscal nota)
         {
+            // FAZER VALIDAÇÃO DOS DADOS
             using (NotaFiscalModel model = new NotaFiscalModel())
             {
                 nota.DataNotaFiscal = DateTime.Now;
+
                 if (nota.IdNotaFiscal > 0)
                 {
                     model.AtualizarNota(nota);

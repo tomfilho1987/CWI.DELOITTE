@@ -1,0 +1,40 @@
+﻿.CabecalhoPagina {
+    background-color: white;
+    font-family: 'arial', sans-serif;
+    font-size: 14pt;
+    border-bottom: solid 1px gray
+}
+
+.MensagemSemDados {
+    font-weight: bold;
+    color: black;
+    font-size: 10pt;
+    font-family: 'arial', sans-serif;
+    background-color: white;
+}
+
+.MensagemErro {
+    font-size: 12pt;
+    color: white;
+    font-family: 'arial', sans-serif;
+    background-color: salmon;
+    border: solid 1px black;
+}
+
+.DataGrid{
+    font-weight: normal;
+    background-color: white;
+    border: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    width: 100%
+}
+
+.Botao{
+    height? 24px;
+    font-size: 10pt;
+    background: #001221;
+    border: solid 1px #004890;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif
+}
